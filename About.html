@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+.navbar{
+  display: flex;
+  background-color:rgb(105, 13, 148);
+  position: fixed;
+  top:0;
+  width: 100%;
+  font-size: 20px;
+}
+
+.nav-right{
+  text-align: right;
+  float:right;
+}
+
+.nav-right li {
+    display: inline;
+    float: left;
+    padding-left: 15px;
+  }
+
+  .nav-right li a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color:#000;
+  }
+
+  .nav-right  li ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+
+  .nav-right li a:hover {
+    background-color: rgb(130, 31, 31);
+  }
+
+  .nav-right .active {
+    background-color: #04AA6D;
+  }
+
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+  width: 300px;
+  height: 400px;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #1fb2b2;
+  color: white;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: rgb(140, 24, 229);
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: rgb(234, 19, 19);
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+/* https://media.istockphoto.com/id/1301533980/photo/books-on-bookshelf-in-library-back-to-school-education-concept-on-colored-abstract-yellow.jpg?b=1&s=170667a&w=0&k=20&c=dvELX4cTJ_NfAWKDcSJ6dThEhInnxMGcfYDYW4DRN4w= */
+.button:hover {
+    background-image: url(data:image/jpeg;base64,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);
+  background-color: rgb(59, 34, 14);
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+</style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-right">
+            <li><a href="./indextask.html">Home</a></li>
+            <li><a href="./products.html">Products</a></li>
+            <li><a href="./About.html">About</a></li>
+            <li><a href="./login.html">Login</a></li>
+            <li><a href="./Register.html">Create Account</a></li>
+        </div>
+    </nav>
+
+<div class="about-section">
+  <h1>About Us </h1>
+  <p>Book World provides easy interface to its customer for purchasing books online.</p>
+  <p>For any query leave a comment in the Home page comment section. You can also send us email and call us 
+      on Week days. 
+      <br>Thankyou for your patience and hope you had a great shopping here.
+  </p>
+</div>
+
+<h2 style="text-align:center">Most Buying</h2>
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <center><img src="http://www.targetacademy.in/wp-content/uploads/2019/04/Harry-Potter-Cover.jpeg" alt="Harry Potter" style="width: 300px; height=200px"></center>
+      <div class="container">
+        <h2>J K Rowling</h2>
+        <p class="title">Writer</p>
+        <p>"popular books that have lso been made into movies"</p>
+        
+        <p><button class="button">Add to cart</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+        <center><img src="http://www.targetacademy.in/wp-content/uploads/2019/04/Jurassic-Park-Novel-Cover-768x1269.jpeg" alt="Jane" style="width: 300px; height=200px"></center>
+      <div class="container">
+        <h2>Michael Crichton</h2>
+        <p class="title">Art Director</p>
+        <p>“Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.”</p>
+        
+        <p><button class="button">Add to Cart</button></p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="column">
+    <div class="card">
+        <center><img src="http://www.targetacademy.in/wp-content/uploads/2019/04/Anne-Frank-3.jpg"alt="Dante" style="width: 350px;  height: 250px; ;"></center>
+      <div class="container">
+        <h2>Dante</h2>
+        <p class="title">Writer</p>
+        <p>“A room without books is like a body without a soul.”</p>
+       
+        <p><button class="button">Add to cart</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
